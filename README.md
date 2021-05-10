@@ -10,10 +10,6 @@ ng serve
 app now runs on http://localhost:4200/
 
 
-# todo
-
-tests
-
 # explanation
 
 I timeboxed my development at 8 hours. As such, I was not able to complete this faily large assignment completely, by finishing all the requirements and providing production ready code. I am not sure this gives a good indication of my capabilities regarding frontend softwarde development. However, I hope this gives some insights on my competences with the basics of Angular development, application state management, html/css and so forth.
