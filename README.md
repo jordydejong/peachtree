@@ -1,4 +1,4 @@
-Backbase FE development assignment "Peachtree Bank" by Jordy de Jong
+FE development assignment "Peachtree Bank" by Jordy de Jong
 
 # installation
 
