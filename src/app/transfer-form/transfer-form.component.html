@@ -1,0 +1,25 @@
+<app-header [icon]="faSync" label="Make a transfer">
+</app-header>
+<div class="body">
+  <form #transferForm="ngForm" (ngSubmit)="onSubmit(transferForm.value)">
+    <div class="row">
+        <label for="source">From account:</label>
+        <input type="text" name="source" disabled [value]="account.name + ' - ' + account.balance">
+    </div>
+    <div class="row">
+        <label for="target">To account:</label>
+        <input type="text" name="target" [(ngModel)]="transfer.target" required [ngClass]="{
+          'error': transferForm.controls['target']?.errors?.required
+        }">
+    </div>
+    <div class="row">
+      <label for="amount">Amount:</label>
+      <input type="number" name="amount" [(ngModel)]="transfer.amount" required [ngClass]="{
+        'error': transferForm.controls['amount']?.errors?.required
+      }">
+    </div>
+    <div class="row">
+        <button type="submit" [disabled]="!transferForm.valid">Submit</button>
+    </div>
+  </form>
+</div>

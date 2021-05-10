@@ -1,0 +1,46 @@
+<app-header [icon]="faSuitcase" label="Recent transactions">
+</app-header>
+
+<div class="body">
+  <input type="text" (keyup)="onFilterChange($event)" placeholder="Search merchant by typing...">
+
+  <div class="button-wrapper">
+    <button (click)="changeSort('transactionDate')">
+      sort by: date
+      {{ sortField == 'transactionDate' && sortDirection == 'desc' ? '&darr;' : ''}}
+      {{ sortField == 'transactionDate' && sortDirection == 'asc' ? '&uarr;' : ''}}
+  </button>
+    <button (click)="changeSort('merchant')">
+      benificiary
+      {{ sortField == 'merchant' && sortDirection == 'desc' ? '&darr;' : ''}}
+      {{ sortField == 'merchant' && sortDirection == 'asc' ? '&uarr;' : ''}}
+    </button>
+    <button (click)="changeSort('amount')">
+      amount
+      {{ sortField == 'amount' && sortDirection == 'desc' ? '&darr;' : ''}}
+      {{ sortField == 'amount' && sortDirection == 'asc' ? '&uarr;' : ''}}
+    </button>
+  </div>
+
+  <table>
+  <tr
+    *ngFor="let transaction of sortedTransactions | merchantFilter : filter"
+    class="transaction"
+  >
+    <td [ngStyle]="{ 'background-color': transaction.categoryCode }"></td>
+    <td>{{ transaction.transactionDate | date: 'MMM d' }} </td>
+    <td>
+      <img *ngIf="transaction.merchantLogo" [src]="transaction.merchantLogo" />
+    </td>
+
+    <td>
+      <div class="merchant">{{ transaction.merchant }}</div>
+      {{ transaction.transactionType}}
+    </td>
+
+    <td>
+      -{{ transaction.amount | currency }}
+    </td>
+  </tr>
+  </table>
+</div>

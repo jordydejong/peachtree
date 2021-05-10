@@ -1,0 +1,78 @@
+@import '../vars';
+
+:host {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 80px auto;
+
+  .header {
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: auto min(100vw, 1200px) auto;
+    background-color: #fff;
+    border-bottom: 2px solid $color-active;
+  }
+
+  .header-inner {
+    display: grid;
+    max-width: 1200px;
+    grid-template-rows: auto max-content auto;
+    grid-column: 2;
+
+    img {
+      grid-row: 2;
+      max-width: 100%;
+    }
+  }
+
+  .main {
+    padding: 20px;
+    grid-row: 2;
+    background: url('/assets/background.jpg');
+    background-size: cover;
+  }
+
+  .main-inner {
+    width: calc(100vw - 40px);
+    grid-column: 2;
+    padding-top: 40px;
+
+    app-transfer-form {
+      padding-right: 40px;
+    }
+
+    app-transaction-list {
+      min-width: 0;
+      grid-column: 2;
+    }
+  }
+
+  @media screen and (min-width: 800px) {
+
+    .main {
+      display: grid;
+      grid-template-columns: auto minmax(max-content, 1200px) auto;
+    }
+
+    .main-inner {
+      grid-column: 2;
+
+      @media screen and (min-width: 800px) {
+        display: grid;
+        grid-template-columns: 300px auto;
+      }
+
+      padding-top: 40px;
+
+      app-transfer-form {
+        grid-column: 1;
+        padding-right: 40px;
+      }
+
+      app-transaction-list {
+        grid-column: 2;
+      }
+    }
+  }
+}
